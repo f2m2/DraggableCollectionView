@@ -10,44 +10,34 @@
 
 @implementation UICollectionView (Draggable)
 
-- (LSCollectionViewHelper *)getHelper
-{
-    LSCollectionViewHelper *helper = objc_getAssociatedObject(self, "LSCollectionViewHelper");
-    if(helper == nil) {
-        helper = [[LSCollectionViewHelper alloc] initWithCollectionView:self];
-        objc_setAssociatedObject(self, "LSCollectionViewHelper", helper, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    }
-    return helper;
-}
-
 - (BOOL)draggable
 {
-    return [self getHelper].enabled;
+    return self.helper.enabled;
 }
 
 - (void)setDraggable:(BOOL)draggable
 {
-    [self getHelper].enabled = draggable;
+    self.helper.enabled = draggable;
 }
 
 - (UIEdgeInsets)scrollingEdgeInsets
 {
-    return [self getHelper].scrollingEdgeInsets;
+    return self.helper.scrollingEdgeInsets;
 }
 
 - (void)setScrollingEdgeInsets:(UIEdgeInsets)scrollingEdgeInsets
 {
-    [self getHelper].scrollingEdgeInsets = scrollingEdgeInsets;
+    self.helper.scrollingEdgeInsets = scrollingEdgeInsets;
 }
 
 - (CGFloat)scrollingSpeed
 {
-    return [self getHelper].scrollingSpeed;
+    return self.helper.scrollingSpeed;
 }
 
 - (void)setScrollingSpeed:(CGFloat)scrollingSpeed
 {
-    [self getHelper].scrollingSpeed = scrollingSpeed;
+    self.helper.scrollingSpeed = scrollingSpeed;
 }
 
 @end
